@@ -8,7 +8,7 @@ module.exports = (db) => {
 * =========================================
 */
   let home = (req, res) => {
-    res.render('/categories');
+    res.redirect('/categories');
   };
 
   let categories = (req, res) => {
@@ -20,6 +20,25 @@ module.exports = (db) => {
       };
     });
   };
+
+  let newCategory = (req, res) => {
+    res.render('new-cat');
+  };
+
+  let updateCategory = (req, res) => {
+    console.log("controllers " +req.body.category);
+    let values = [req.body.category];
+    db.notbook.upCat(values, (err, result) => {
+      res.redirect('/categories');
+    });
+  };
+
+  // let showCategory = (req, res) => {
+  //   let params =
+  //   db.notbook.showCat((err, result) => {
+  //     res.render('')
+  //   })
+  // }
 
   // let addNewUser = (req, res) => {
   //   let newUserName = req.body.name;
@@ -47,5 +66,7 @@ module.exports = (db) => {
   return {
     home,
     categories,
+    newCategory,
+    updateCategory,
   };
 };

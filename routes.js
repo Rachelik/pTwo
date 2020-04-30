@@ -10,7 +10,9 @@ module.exports = (app, allModels) => {
 
 
   app.get('/categories', notbookCtrl.categories);
-
+  app.get('/categories/new', notbookCtrl.newCategory);
+  app.post('/categories', notbookCtrl.updateCategory);
+  // app.get('/categories/:id', notbookCtrl.showCategory);
 
   app.get('/', notbookCtrl.home);
 };
