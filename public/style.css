@@ -41,6 +41,7 @@ body {
 .nav-link:hover {
   color: #18a2b8;
   border: 3px solid #18a2b8;
+  cursor: pointer;
 }
 
 .nav {
@@ -67,4 +68,8 @@ body {
 
 .hidden {
   visibility: hidden;
+}
+
+.none {
+  display: none;
 }

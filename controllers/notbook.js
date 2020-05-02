@@ -8,18 +8,26 @@ module.exports = (db) => {
 * =========================================
 */
   let home = (req, res) => {
-    res.redirect('/categories');
+    res.render('template', { link : "home"});
   };
 
-  let categories = (req, res) => {
+  let welcome = (req, res) => {
+    res.render('welcome');
+  }
+
+  let category = (req, res) => {
+    res.render('template', { link : "category"});
+  }
+
+  let cats = (req, res) => {
     db.notbook.allCats((err, result) => {
       if (result === null) {
-        res.render('layout', { result : null });
+        res.render('all-cats', { result : null });
       } else {
-        res.render('layout', { result });
+        res.render('all-cats', { result });
       };
     });
-  };
+  }
 
   let newCategory = (req, res) => {
     res.render('new-cat');
@@ -34,26 +42,16 @@ module.exports = (db) => {
   };
 
   // let showCategory = (req, res) => {
-  //   let params =
-  //   db.notbook.showCat((err, result) => {
-  //     res.render('')
+  //   let params = req.params.id;
+  //   db.notbook.showCat(params, (err, result) => {
+  //     res.render('page')
   //   })
   // }
 
-  // let addNewUser = (req, res) => {
-  //   let newUserName = req.body.name;
-  //   db.tweed.checkUserQ(newUserName, (error, checkUserQResult) => {
-  //       if(checkUserQResult === null) {
-  //           let reqHPassword = sha256(req.body.password);
-  //           let values = [req.body.name, reqHPassword];
-  //           db.tweed.addNewUserQ(values, (err, result) => {
-  //               res.redirect('/login');
-  //           });
-  //       } else {
-  //           res.render('tweed/register', { register : "failed" });
-  //       };
-  //   });
-  // };
+  // let page = (req, res) => {
+  //   res.render('page');
+  // }
+
 
 
 
@@ -65,8 +63,11 @@ module.exports = (db) => {
 
   return {
     home,
-    categories,
+    welcome,
+    category,
+    cats,
     newCategory,
     updateCategory,
+    // page,
   };
 };
