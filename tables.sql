@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS categories (
 
 CREATE TABLE IF NOT EXISTS pages (
     id SERIAL PRIMARY KEY,
-    category_id TEXT,
+    category_id INTEGER,
     title TEXT,
     created TIMESTAMPTZ default now(),
     bookmark BOOLEAN
