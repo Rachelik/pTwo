@@ -8,19 +8,21 @@ module.exports = (app, allModels) => {
   // require the controller
   const notbookCtrl = require('./controllers/notbook')(allModels);
 
-  app.get('/category/new', notbookCtrl.newCategory)
+  app.get('/category/new', notbookCtrl.newCategory);
   app.get('/category', notbookCtrl.category);
   app.post('/category', notbookCtrl.updateCategory);
-  // app.get('/welcome', notbookCtrl.welcome)
-  // app.get('/category', notbookCtrl.category);
+  app.get('/category/:id', notbookCtrl.showCategory);
 
+  app.get('/category/:id/title/new', notbookCtrl.newTitle);
+  app.post('/category/:id/title', notbookCtrl.updateTitle);
+  // app.get('/category/:id/title/:tid', notbookCtrl.showTitle);
 
-
-  // app.get('/category/:id', notbookCtrl.showCategory);
-
-  // app.get('/category/:id/title', notbookCtrl.titles);
-
-  // app.get('/page', notbookCtrl.page);
 
   app.get('/', notbookCtrl.home);
+
+
+
+
+
+
 };

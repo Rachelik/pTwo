@@ -1,22 +1,7 @@
 var React = require("react");
 
-class Template extends React.Component {
+class Items extends React.Component {
   render() {
-
-    let allCats = this.props.result;
-    // console.log('Layout.jsx allCats result');
-    let list;
-
-    if (allCats === null) {
-      list = "No categories added yet. Please add a category using the '+ New Category' button";
-    } else {
-      list = allCats.map((cat) => {
-        return (
-          <li key={cat.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+cat.id} className="list-group-item list-group-item-action all-list-li">{cat.category}</a>
-          </li>
-          );
-      });
-    };
 
     return (
       <html>
@@ -42,32 +27,26 @@ class Template extends React.Component {
                   <li><a href="/highlights" className="nav-items nav-link">Highlights</a></li>
                 </ul>
 
-
                 <div className="contents">
-
-                  <div className="input-group mb-3">
-                    <input type="text" className="form-control" aria-label="Text input with dropdown button" />
-                    <div className="input-group-prepend">
-                      <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by</button>
-                      <div className="dropdown-menu">
-                        <a className="dropdown-item" href="#">Category</a>
-                        <a className="dropdown-item" href="#">Title</a>
-                        <a className="dropdown-item" href="#">Item</a>
+                  <div className="page-form-section">
+                    <form action={"/category/"+this.props.result.category_id+"/title"} method="POST">
+                      <div className="form-row">
+                        <div className="col col-sm-6 col-xs-4">
+                          <input name="title" className="form-control" required/>
+                        </div>
+                        <input type="submit" className="btn btn-outline-info up-title-btn" value="Add New Title" />
                       </div>
-                    </div>
+                    </form>
+                    <br />
                   </div>
+                  <br/>
 
-                  <div className="add-new-btn">
-                    <button type="button" className="btn btn-outline-info">+ New Category</button>
-                  </div>
-
-                  <div className="categories">
-                    <ul className="all-list list-group">
-                      {list}
+                  <div className="titles">
+                    <ul className="all-titles-list list-group">
+                      {titleList}
                     </ul>
                   </div>
-
-              </div>
+                </div>
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>
@@ -83,4 +62,4 @@ class Template extends React.Component {
   }
 }
 
-module.exports = Template;
+module.exports = Items;
