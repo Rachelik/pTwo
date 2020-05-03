@@ -1,25 +1,26 @@
-// const newCatBtn = document.querySelector('.new-cat-btn');
-// const allList = document.querySelector('.all-list');
-// const addNew = document.querySelector('.add-new');
-// const catFormSection = document.querySelector('.cat-form-section');
-// const inputGroup = document.querySelector('.input-group');
+//new-cat.jsx form submission
+const upCatBtn = document.querySelector('.up-cat-btn');
 
+const upCatBtnClick = function(event) {
+  // allList.classList.remove("hidden");
+  // newCatBtn.classList.remove("hidden");
+  // inputGroup.classList.remove("hidden");
+  console.log("event.target.innerText")
+  console.log(event.target.innerText);
+  let request = new XMLHttpRequest();
+  let responseHandler = function() {
+    console.log("responseText");
+    console.log(this.responseText);
+  };
 
-// const newCatBtnHandler = (event) => {
-//   console.log(this)
-//   allList.classList.add("hidden");
-//   newCatBtn.classList.add("hidden");
-//   inputGroup.classList.add("hidden");
+  let data = {
+    category : document.querySelector('.form-control').value
+  };
+  request.addEventListener("load", responseHandler);
 
-//   let request = new XMLHttpRequest();
-//   let responseHandler = function() {
-//     catFormSection.innerHTML = this.responseText;
-//   };
+  request.open("POST", '/category');
+  request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+  request.send(JSON.stringify.data);
+};
 
-//   request.addEventListener('load', responseHandler);
-
-//   let url = "/categories/new";
-//   request.open("GET", url);
-//   request.send();
-// };
-// newCatBtn.addEventListener('click', newCatBtnHandler);
+upCatBtn.addEventListener('click', upCatBtnClick);

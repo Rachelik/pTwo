@@ -56,6 +56,6 @@ module.exports = (dbPoolInstance) => {
 
     return {
       allCats,
-      // upCat,
+      upCat,
     };
 };

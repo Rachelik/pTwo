@@ -18,7 +18,7 @@ class Categories extends React.Component {
           );
       });
     };
-            // <script src="/all-cats.js"></script>
+            //
 
     return (
 
@@ -35,12 +35,16 @@ class Categories extends React.Component {
           </div>
         </div>
 
-
-        <div className="add-new">
-          <button type="button" className="btn btn-outline-info new-cat-btn">+ New Category</button>
-        </div>
-
         <div className="cat-form-section">
+          <form action="/category" method="POST">
+            <div className="form-row">
+              <div className="col col-sm-6 col-xs-4">
+                <input name="category" className="form-control" required/>
+              </div>
+              <input type="submit" className="btn btn-outline-info up-cat-btn" value="Add New Category" />
+            </div>
+          </form>
+          <br />
         </div>
 
         <div className="categories">
@@ -48,10 +52,8 @@ class Categories extends React.Component {
             {list}
           </ul>
         </div>
-
+        <script src="/all-cats.js"></script>
       </div>
-
-
     );
   }
 }

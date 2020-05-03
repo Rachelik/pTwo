@@ -29,15 +29,15 @@ module.exports = (db) => {
     });
   }
 
-  let newCategory = (req, res) => {
-    res.render('new-cat');
-  };
+  // let newCategory = (req, res) => {
+  //   res.render('all-cats');
+  // };
 
   let updateCategory = (req, res) => {
     console.log("controllers " +req.body.category);
     let values = [req.body.category];
     db.notbook.upCat(values, (err, result) => {
-      res.redirect('/categories');
+      res.redirect('/category');
     });
   };
 
@@ -66,7 +66,7 @@ module.exports = (db) => {
     welcome,
     category,
     cats,
-    newCategory,
+    // newCategory,
     updateCategory,
     // page,
   };
