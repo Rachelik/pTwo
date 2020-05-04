@@ -100,3 +100,7 @@ h5 {
   padding: 8px;
   box-sizing: border-box;
 }
+
+.highlight-btn {
+  font-size: 24px;
+}

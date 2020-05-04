@@ -146,13 +146,17 @@ module.exports = (dbPoolInstance) => {
   };
 
   let upEditItem = (iparams, values, call) => {
-    let upEditItemQ = 'UPDATE items SET note=$1 where id ='+iparams;
+    let upEditItemQ = 'UPDATE items SET note=$1 where id ='+iparams+'returning *';
     dbPoolInstance.query(upEditItemQ, values, (err, queryRes) => {
+      console.log("AAAAAAAAAA")
       if (err) {
+        console.log(err);
         call(err, null);
       } else {
         if ( queryRes.rows.length > 0 ) {
           call(null, queryRes.rows);
+          console.log("BBBBBBBBBBBBB");
+          console.log(queryRes.rows);
         } else {
           call(null, null);
         };
@@ -160,6 +164,22 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  let upHighlight = (values, call) => {
+    let upHighlightQ = 'UPDATE items SET highlight=$2 where id=$1 RETURNING *';
+    dbPoolInstance.query(upHighlightQ, values, (err, queryRes) => {
+      if (err) {
+        console.log(err);
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+          console.log(queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    })
+  }
 
     return {
       allCats,
@@ -172,5 +192,6 @@ module.exports = (dbPoolInstance) => {
       upItem,
       getItem,
       upEditItem,
+      upHighlight,
     };
 };

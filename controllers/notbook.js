@@ -63,7 +63,6 @@ module.exports = (db) => {
   let showTitle = (req, res) => {
     //category id params
     let params = req.params.id;
-    console.log(params)
     //title id params
     let tparams = req.params.tid;
     db.notbook.getCatTitle(params, (err, catRes) => {
@@ -134,6 +133,20 @@ let updateEditItem = (req, res) => {
   });
 };
 
+let updateHighlights = (req, res) => {
+  console.log(req.body);
+  let params = req.params.id;
+  let tparams = req.params.tid;
+  let iparams = req.params.iid;
+  let values = [req.body.item_id, req.body.highlight]
+  console.log("req.body.item_id")
+  console.log(req.body.item_id)
+  console.log(values);
+  db.notbook.upHighlight(values, (err, result) => {
+
+  });
+};
+
 /**
 * =========================================
 * Export controller functions as a module
@@ -154,5 +167,6 @@ let updateEditItem = (req, res) => {
     updateItem,
     editItem,
     updateEditItem,
+    updateHighlights,
   };
 };

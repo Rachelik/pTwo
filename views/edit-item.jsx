@@ -1,6 +1,6 @@
 var React = require("react");
 
-class Newitem extends React.Component {
+class Edititem extends React.Component {
   render() {
     //Title
     let pages = this.props.titleRes[0];
@@ -64,4 +64,4 @@ class Newitem extends React.Component {
   }
 }
 
-module.exports = Newitem;
+module.exports = Edititem;

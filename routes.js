@@ -8,6 +8,8 @@ module.exports = (app, allModels) => {
   // require the controller
   const notbookCtrl = require('./controllers/notbook')(allModels);
 
+  app.put('/category/:id/title/:tid/item/:iid/highlights', notbookCtrl.updateHighlights);
+
   app.get('/category/new', notbookCtrl.newCategory);
   app.get('/category', notbookCtrl.category);
   app.post('/category', notbookCtrl.updateCategory);
@@ -20,16 +22,14 @@ module.exports = (app, allModels) => {
   app.get('/category/:id/title/:tid/item/new', notbookCtrl.newItem);
   app.post('/category/:id/title/:tid/item', notbookCtrl.updateItem);
 
+
   app.get('/category/:id/title/:tid/item/:iid', notbookCtrl.editItem);
   app.put('/category/:id/title/:tid/item/:iid', notbookCtrl.updateEditItem);
 
   app.get('/main', notbookCtrl.main)
 
+
   app.get('/', notbookCtrl.home);
-
-
-
-
 
 
 };
