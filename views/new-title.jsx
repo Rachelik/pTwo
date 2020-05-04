@@ -32,7 +32,7 @@ class Newtitle extends React.Component {
 
                 <form action={titlePostLink} method="POST">
                   <div className="form-row">
-                    <div className="col col-sm-6 col-xs-4">
+                    <div className="col col-sm-9 col-xs-6">
                       <input name="title" className="form-control" required/>
                     </div>
                     <input type="submit" className="btn btn-outline-info" value="Add New Title" />

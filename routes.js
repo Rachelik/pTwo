@@ -22,6 +22,8 @@ module.exports = (app, allModels) => {
 
   // app.get('/category/:id/title/:tid/items/new', notbookCtrl.newItem);
 
+  app.get('/main', notbookCtrl.main)
+
   app.get('/', notbookCtrl.home);
 
 

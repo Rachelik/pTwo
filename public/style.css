@@ -77,3 +77,12 @@ h5, h6 {
 .none {
   display: none;
 }
+
+h5 {
+  border: 1px solid #b1f2ff;
+  border-radius: 10px 10px;
+  background-color: white;
+  color: darkblue;
+  padding: 5px 0;
+  font-family: "Trebuchet MS", sans-serif;
+}

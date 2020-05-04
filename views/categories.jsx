@@ -35,6 +35,11 @@ class Categories extends React.Component {
                   <h3>NOTbook</h3>
                 </div>
 
+                <ul className="nav nav-tabs">
+                  <li><a href="/main" className="nav-items nav-link">Main</a></li>
+                  <li><a href="/category" className="nav-items nav-link active">Category</a></li>
+                </ul>
+
                 <h5>Welcome</h5>
 
                 <div className="contents">

@@ -6,7 +6,11 @@ module.exports = (db) => {
 */
 
   let home = (req, res) => {
-    res.redirect('/category')
+    res.redirect('/category');
+  };
+
+  let main = (req, res) => {
+    res.render('main');
   };
 
   let category = (req, res) => {
@@ -108,6 +112,7 @@ let updateItem = (req, res) => {
 
   return {
     home,
+    main,
     category,
     newCategory,
     updateCategory,

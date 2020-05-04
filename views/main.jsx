@@ -1,6 +1,6 @@
 var React = require("react");
 
-class Newcategory extends React.Component {
+class Main extends React.Component {
   render() {
 
     return (
@@ -16,21 +16,25 @@ class Newcategory extends React.Component {
           <body>
             <div className="container">
 
-              <div className="page-header">
-                <h3>NOTbook</h3>
-              </div>
+                <div className="page-header">
+                  <h3>NOTbook</h3>
+                </div>
 
-              <div className="cat-form-section">
-                <form action="/category" method="POST">
-                  <div className="form-row">
-                    <div className="col col-sm-9 col-xs-6">
-                      <input name="category" className="form-control" required/>
-                    </div>
-                    <input type="submit" className="btn btn-outline-info up-cat-btn" value="Add New Category" />
-                  </div>
-                </form>
-              </div>
+                <ul className="nav nav-tabs">
+                  <li><a href="/main" className="nav-items nav-link active">Main</a></li>
+                  <li><a href="/category" className="nav-items nav-link">Category</a></li>
+                </ul>
 
+
+                <h5>Manual</h5>
+
+                <div className="contents">
+                <p>Click on existing Categories or create new Category using the "+ New Category" button</p>
+                <p>Under each Category, click on existing Title or create title using the "+ New Title" button. </p>
+                <p>Under each Title, create new item using the "+ New Item"</p>
+
+
+                </div>
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>
@@ -45,4 +49,4 @@ class Newcategory extends React.Component {
   }
 }
 
-module.exports = Newcategory;
+module.exports = Main;

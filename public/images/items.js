@@ -1,0 +1,1 @@
+// let allItemList = document.querySelectorAll()
