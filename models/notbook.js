@@ -68,6 +68,22 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  // to get title from pages table when click
+   let getTitle = (tparams, call) => {
+     let getTitleQ = 'SELECT * FROM pages WHERE id='+tparams;
+     dbPoolInstance.query(getTitleQ, (err, queryRes) => {
+       if (err) {
+         call(err, null);
+       } else {
+         if ( queryRes.rows.length > 0 ) {
+           call(null, queryRes.rows);
+         } else {
+           call(null, null);
+         };
+       };
+     });
+   };
+
   let upTitle = (values, call) => {
     let upTitleQ = "INSERT INTO pages (category_id, title) values ($1, $2)";
     dbPoolInstance.query(upTitleQ, values, (err, queryRes) => {
@@ -83,6 +99,7 @@ module.exports = (dbPoolInstance) => {
     })
   }
 
+//get item using title
   let getTitleItem = (tparams, call) => {
     let getTitleItemQ = "SELECT * FROM items WHERE title_id ="+tparams;
     dbPoolInstance.query(getTitleItemQ, (err, queryRes) => {
@@ -95,9 +112,23 @@ module.exports = (dbPoolInstance) => {
           call(null, null);
         };
       };
-    })
-  }
+    });
+  };
 
+  let upItem = (values, call) => {
+    let upItemQ = "INSERT INTO items (title_id, note) values ($1, $2)";
+    dbPoolInstance.query(upItemQ, values, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  }
 
 
     return {
@@ -105,7 +136,9 @@ module.exports = (dbPoolInstance) => {
       upCat,
       getCatTitle,
       showCat,
+      getTitle,
       upTitle,
       getTitleItem,
+      upItem,
     };
 };

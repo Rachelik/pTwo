@@ -11,7 +11,7 @@ class Items extends React.Component {
     let category = categories.category;
     // let newTitleLink = "/category/"+categories.id+"/title/new";
 
-    let newItemLink = "/category/"+categories.id+"/title/"+pages.id+"/new"
+    let newItemLink = "/category/"+categories.id+"/title/"+pages.id+"/item/new"
     let items = this.props.itemRes;
     let itemList;
     if (items === null) {
@@ -19,7 +19,7 @@ class Items extends React.Component {
     } else {
       itemList = items.map((item) => {
       return (
-        <li key={item.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id} className="list-group-item list-group-item-action all-items-list">{item.note}</a></li>
+        <li key={item.id} className="d-flex justify-content-between align-items-center list-group-item list-group-item-action all-item-list">{item.note}</li>
         );
       });
 

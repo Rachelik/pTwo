@@ -1,12 +1,18 @@
 var React = require("react");
 
-class Newtitle extends React.Component {
+class Newitem extends React.Component {
   render() {
-      //category
-      let category = this.props.catRes[0];
+    //Title
+    let pages = this.props.titleRes[0];
+    let title = pages.title;
+    let titleId = pages.id;
 
-      //link to save new title
-      let titlePostLink = "/category/"+category.id+"/title";
+    //Category
+    let categories = this.props.catRes[0];
+    let category = categories.category;
+
+    //link to save new item
+    let itemPostLink = "/category/"+categories.id+"/title/"+pages.id+"/item"
 
     return (
       <html>
@@ -25,18 +31,19 @@ class Newtitle extends React.Component {
                 <h3>NOTbook</h3>
               </div>
 
-              <h5>{category.category}</h5>
+              <h5>{category}</h5>
+              <h6>{title}</h6>
               <br/>
 
-              <div className="title-form-section">
+              <div className="item-form-section">
 
-                <form action={titlePostLink} method="POST">
+                <form action={itemPostLink} method="POST">
                   <div className="form-row">
                     <div className="col col-sm-6 col-xs-4">
-                      <input name="title" className="form-control" required/>
+                      <input name="note" className="form-control" required/>
                     </div>
-                    <input type="submit" className="btn btn-outline-info" value="Add New Title" />
-                    <input name="category_id" className="form-control hidden" defaultValue={category.id}readOnly/>
+                    <input type="submit" className="btn btn-outline-info" value="Add New Item" />
+                    <input name="title_id" className="form-control hidden" defaultValue={titleId} readOnly/>
                   </div>
                 </form>
 
@@ -56,4 +63,4 @@ class Newtitle extends React.Component {
   }
 }
 
-module.exports = Newtitle;
+module.exports = Newitem;

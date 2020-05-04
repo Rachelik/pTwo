@@ -17,6 +17,9 @@ module.exports = (app, allModels) => {
   app.post('/category/:id/title', notbookCtrl.updateTitle);
   app.get('/category/:id/title/:tid', notbookCtrl.showTitle);
 
+  app.get('/category/:id/title/:tid/item/new', notbookCtrl.newItem);
+  app.post('/category/:id/title/:tid/item', notbookCtrl.updateItem);
+
   // app.get('/category/:id/title/:tid/items/new', notbookCtrl.newItem);
 
   app.get('/', notbookCtrl.home);

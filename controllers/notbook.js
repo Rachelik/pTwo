@@ -54,6 +54,7 @@ module.exports = (db) => {
       res.redirect('/category/'+req.body.category_id);
     });
   };
+
 //category/:id/title/:tid  ---> items
   let showTitle = (req, res) => {
     //category id params
@@ -63,7 +64,7 @@ module.exports = (db) => {
     let tparams = req.params.tid;
     db.notbook.getCatTitle(params, (err, catRes) => {
       //catRes will get me category_id and category
-      db.notbook.showCat(params, (err, titleRes) => {
+      db.notbook.getTitle(tparams, (err, titleRes) => {
         //result will get me all titles under category
         db.notbook.getTitleItem(tparams, (err, itemRes) =>{
           res.render('items', { catRes, titleRes, itemRes });
@@ -71,6 +72,33 @@ module.exports = (db) => {
       });
     });
   };
+
+//new item /category/:id/title/:tid/item/new
+let newItem = (req, res) => {
+  //category id params
+  let params = req.params.id;
+  let tparams = req.params.tid;
+  db.notbook.getCatTitle(params, (err, catRes) => {
+    //catRes will get me category_id and category
+    db.notbook.getTitle(tparams, (err, titleRes) => {
+      //result will get me all titles under category
+      db.notbook.getTitleItem(tparams, (err, itemRes) =>{
+        res.render('new-item', { catRes, titleRes, itemRes });
+      });
+    });
+  });
+};
+
+// category/:id/title/:tid/item'
+
+let updateItem = (req, res) => {
+  let params = req.params.id
+  let tparams = req.params.tid
+  let values = [req.body.title_id, req.body.note];
+  db.notbook.upItem(values, (err, result) => {
+    res.redirect('/category/'+params+'/title/'+tparams);
+  });
+};
 
 /**
 * =========================================
@@ -87,5 +115,7 @@ module.exports = (db) => {
     newTitle,
     updateTitle,
     showTitle,
+    newItem,
+    updateItem,
   };
 };
