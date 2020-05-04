@@ -5,8 +5,8 @@ insert into categories (category) values ('JavaScript');
 insert into categories (category) values ('Express.js');
 
 
-insert into pages (category_id, title, bookmark) values (1, 'tags', true);
-insert into pages (category_id, title, bookmark) values (1, 'elements', false);
+insert into pages (category_id, title) values (1, 'tags');
+insert into pages (category_id, title) values (1, 'elements');
 insert into pages (category_id, title) values (2, 'flexbox');
 insert into pages (category_id, title) values (3, 'clickHandler');
 insert into pages (category_id, title) values (4, 'camelCase');
