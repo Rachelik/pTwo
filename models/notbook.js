@@ -36,6 +36,7 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+//to get id and category from categories table
   let getCatTitle = (params, call) => {
     let getCatTitleQ = "SELECT * FROM categories WHERE id ="+params;
     dbPoolInstance.query(getCatTitleQ, (err, queryRes) => {
@@ -51,6 +52,7 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+ //to get id and title from pages table
   let showCat = (params, call) => {
     let showCatQ = 'SELECT * FROM pages WHERE category_id='+params;
     dbPoolInstance.query(showCatQ, (err, queryRes) => {
@@ -81,6 +83,20 @@ module.exports = (dbPoolInstance) => {
     })
   }
 
+  let getTitleItem = (tparams, call) => {
+    let getTitleItemQ = "SELECT * FROM items WHERE title_id ="+tparams;
+    dbPoolInstance.query(getTitleItemQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    })
+  }
 
 
 
@@ -90,5 +106,6 @@ module.exports = (dbPoolInstance) => {
       getCatTitle,
       showCat,
       upTitle,
+      getTitleItem,
     };
 };

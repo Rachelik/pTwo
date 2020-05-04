@@ -13,9 +13,8 @@ CREATE TABLE IF NOT EXISTS pages (
 
 CREATE TABLE IF NOT EXISTS items (
     id SERIAL PRIMARY KEY,
-    page_id INTEGER,
+    title_id INTEGER,
     note TEXT,
-    highlight boolean,
     updated TIMESTAMPTZ default now()
 );
 

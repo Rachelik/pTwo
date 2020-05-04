@@ -12,3 +12,7 @@ insert into pages (category_id, title) values (3, 'clickHandler');
 insert into pages (category_id, title) values (4, 'camelCase');
 insert into pages (category_id, title) values (5, 'CRUD');
 
+
+INSERT INTO items (title_id, note) values (6, 'input form with display none will not be submitted.');
+INSERT INTO items (title_id, note) values (7, 'try');
+

@@ -49,7 +49,7 @@ body {
   border-bottom: 2px solid grey;
 }
 
-h5 {
+h5, h6 {
   text-align: center;
 }
 

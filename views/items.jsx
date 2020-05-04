@@ -2,7 +2,28 @@ var React = require("react");
 
 class Items extends React.Component {
   render() {
+    //Title
+    let pages = this.props.titleRes[0];
+    let title = pages.title;
 
+    //Category
+    let categories = this.props.catRes[0];
+    let category = categories.category;
+    // let newTitleLink = "/category/"+categories.id+"/title/new";
+
+    let newItemLink = "/category/"+categories.id+"/title/"+pages.id+"/new"
+    let items = this.props.itemRes;
+    let itemList;
+    if (items === null) {
+      itemList = "No items added yet. Please add a category using the '+ New items' button";
+    } else {
+      itemList = items.map((item) => {
+      return (
+        <li key={item.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id} className="list-group-item list-group-item-action all-items-list">{item.note}</a></li>
+        );
+      });
+
+    };
     return (
       <html>
           <head>
@@ -20,33 +41,20 @@ class Items extends React.Component {
                   <h3>NOTbook</h3>
                 </div>
 
-                <ul className="nav nav-tabs">
-                  <li><a href="/home" className="nav-items nav-link">Home</a></li>
-                  <li><a href="/category" className="nav-items nav-link">Category</a></li>
-                  <li><a href="/bookmarks" className="nav-items nav-link">Bookmarks</a></li>
-                  <li><a href="/highlights" className="nav-items nav-link">Highlights</a></li>
-                </ul>
+                <h5>{category}</h5>
+                <h6>{title}</h6>
+                <br/>
 
-                <div className="contents">
-                  <div className="page-form-section">
-                    <form action={"/category/"+this.props.result.category_id+"/title"} method="POST">
-                      <div className="form-row">
-                        <div className="col col-sm-6 col-xs-4">
-                          <input name="title" className="form-control" required/>
-                        </div>
-                        <input type="submit" className="btn btn-outline-info up-title-btn" value="Add New Title" />
-                      </div>
-                    </form>
-                    <br />
-                  </div>
-                  <br/>
+                <a href={newItemLink} className="btn btn-outline-info">+ New Item</a>
+                <br/>
+                <br/>
 
-                  <div className="titles">
-                    <ul className="all-titles-list list-group">
-                      {titleList}
-                    </ul>
-                  </div>
+                <div className="items">
+                  <ul className="all-items-list list-group">
+                    {itemList}
+                  </ul>
                 </div>
+
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>

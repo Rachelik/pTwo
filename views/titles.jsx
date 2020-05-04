@@ -9,11 +9,11 @@ class Titles extends React.Component {
 
     let titleList;
     if (pages === null) {
-      titleList = "No categories added yet. Please add a category using the '+ New Category' button";
+      titleList = "No titles added yet. Please add a category using the '+ New Category' button";
     } else {
       titleList = pages.map((page) => {
       return (
-        <li key={page.id} className="d-flex justify-content-between align-items-center"><a href={"/category/:id/title/"+page.id} className="list-group-item list-group-item-action all-page-list">{page.title}</a></li>
+        <li key={page.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+page.category_id+"/title/"+page.id} className="list-group-item list-group-item-action all-page-list">{page.title}</a></li>
         );
       });
     };
@@ -41,8 +41,6 @@ class Titles extends React.Component {
                 <a href={newTitleLink} className="btn btn-outline-info">+ New Title</a>
                 <br/>
                 <br/>
-
-
 
                 <div className="titles">
                   <ul className="list-group">
