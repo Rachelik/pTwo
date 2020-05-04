@@ -42,7 +42,7 @@ class Newitem extends React.Component {
                     <div className="col col-sm-9 col-xs-6">
                       <input name="note" className="form-control" required/>
                     </div>
-                    <input type="submit" className="btn btn-outline-info" value="Add New Item" />
+                    <input type="submit" className="btn btn-outline-info" value="Add Item" />
                     <input name="title_id" className="form-control hidden" defaultValue={titleId} readOnly/>
                   </div>
                 </form>

@@ -9,7 +9,7 @@ class Titles extends React.Component {
 
     let titleList;
     if (pages === null) {
-      titleList = "No titles added yet. Please add a category using the '+ New Category' button";
+      titleList = "No titles added yet. Please add a category using the '+ New Title' button";
     } else {
       titleList = pages.map((page) => {
       return (

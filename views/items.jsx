@@ -16,7 +16,7 @@ class Items extends React.Component {
     let items = this.props.itemRes;
     let itemList;
     if (items === null) {
-      itemList = "No items added yet. Please add a category using the '+ New items' button";
+      itemList = "No items added yet. Please add a category using the '+ New item' button";
     } else {
       itemList = items.map((item) => {
       return (

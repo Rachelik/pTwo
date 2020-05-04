@@ -31,7 +31,8 @@ class Main extends React.Component {
                 <div className="contents">
                 <p>Click on existing Categories or create new Category using the "+ New Category" button</p>
                 <p>Under each Category, click on existing Title or create title using the "+ New Title" button. </p>
-                <p>Under each Title, create new item using the "+ New Item"</p>
+                <p>Under each Title, create new item using the "+ New Item". Only note can be edited.</p>
+                <p>Category and Title cannot be edited.</p>
 
 
                 </div>

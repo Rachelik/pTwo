@@ -35,7 +35,7 @@ class Newtitle extends React.Component {
                     <div className="col col-sm-9 col-xs-6">
                       <input name="title" className="form-control" required/>
                     </div>
-                    <input type="submit" className="btn btn-outline-info" value="Add New Title" />
+                    <input type="submit" className="btn btn-outline-info" value="Add Title" />
                     <input name="category_id" className="form-control hidden" defaultValue={category.id}readOnly/>
                   </div>
                 </form>
