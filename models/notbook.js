@@ -7,22 +7,26 @@
 module.exports = (dbPoolInstance) => {
 
   let allCats = (call) => {
-    let allCatsQ = "SELECT * FROM categories ORDER BY category ASC;";
+    let allCatsQ = "SELECT * FROM categories ORDER BY category ASC";
     dbPoolInstance.query(allCatsQ, (err, queryRes) => {
       if (err) {
+        console.log("error block 11111")
         call(err, null);
       } else {
         if ( queryRes.rows.length > 0 ) {
+          console.log("NO error block found results 11111")
           call(null, queryRes.rows);
+          console.log(queryRes.rows);
         } else {
           call(null, null);
+          console.log("no error, no result 3333333")
         };
       };
     });
   };
 
   let upCat = (values, call) => {
-    let upCatQ = 'INSERT INTO categories (category) values ($1) returning *;';
+    let upCatQ = 'INSERT INTO categories (category) values ($1) returning *';
     dbPoolInstance.query(upCatQ, values, (err, queryRes) => {
       if (err) {
         call(err, null);
