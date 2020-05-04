@@ -28,6 +28,7 @@ module.exports = (app, allModels) => {
 
   app.get('/main', notbookCtrl.main)
 
+  app.get('/highlight', notbookCtrl.showHighlights);
 
   app.get('/', notbookCtrl.home);
 

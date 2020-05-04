@@ -38,6 +38,7 @@ class Titles extends React.Component {
                 <ul className="nav nav-tabs">
                   <li><a href="/main" className="nav-items nav-link">Main</a></li>
                   <li><a href="/category" className="nav-items nav-link">Category</a></li>
+                  <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
                 </ul>
 
                 <h5>{category}</h5>

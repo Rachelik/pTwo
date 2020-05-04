@@ -20,6 +20,8 @@ class Newcategory extends React.Component {
                 <h3>NOTbook</h3>
               </div>
 
+              <br/>
+
               <div className="cat-form-section">
                 <form action="/category" method="POST">
                   <div className="form-row">

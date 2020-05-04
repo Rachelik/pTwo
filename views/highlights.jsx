@@ -1,21 +1,24 @@
 var React = require("react");
 
-class Categories extends React.Component {
+class Highlights extends React.Component {
   render() {
-    let allCats = this.props.result;
-    let list;
 
-    if (allCats === null) {
-      list = "No categories added yet. Please add a category using the '+ New Category' button";
+    let items = this.props.result;
+
+    let itemList;
+    if (items === null) {
+      itemList = "No items highlighted yet. Please add a category using the '+ New item' button";
     } else {
-      list = allCats.map((cat) => {
-        return (
-          <li key={cat.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+cat.id} className="list-group-item list-group-item-action all-list-li">{cat.category}</a>
-          </li>
-          );
-      });
-    };
 
+      itemList = items.map((item) => {
+      return (
+        <li key={item.id} className="d-flex justify-content-between align-items-center">
+          <a href="" className="list-group-item list-group-item-action">{item.note}</a>
+        </li>
+        );
+      });
+
+    };
     return (
       <html>
           <head>
@@ -35,22 +38,20 @@ class Categories extends React.Component {
 
                 <ul className="nav nav-tabs">
                   <li><a href="/main" className="nav-items nav-link">Main</a></li>
-                  <li><a href="/category" className="nav-items nav-link active">Category</a></li>
-                  <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
+                  <li><a href="/category" className="nav-items nav-link">Category</a></li>
+                  <li><a href="/highlight" className="nav-items nav-link active">Highlights</a></li>
                 </ul>
 
-                <h5>Welcome</h5>
+                <h5>Highlights</h5>
+                <br/>
 
-                <div className="contents">
-                  <a href="/category/new" className="btn btn-outline-info">+ New Category</a>
 
-                  <div className="categories">
-                    <ul className="list-group">
-                      {list}
-                    </ul>
-                  </div>
+                <div className="items">
+                  <ul className="all-items-list list-group">
+                    {itemList}
+                  </ul>
+                </div>
 
-            </div>
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>
@@ -65,4 +66,4 @@ class Categories extends React.Component {
   }
 }
 
-module.exports = Categories;
+module.exports = Highlights;

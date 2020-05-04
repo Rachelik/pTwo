@@ -134,7 +134,6 @@ let updateEditItem = (req, res) => {
 };
 
 let updateHighlights = (req, res) => {
-  console.log(req.body);
   let params = req.params.id;
   let tparams = req.params.tid;
   let iparams = req.params.iid;
@@ -143,7 +142,12 @@ let updateHighlights = (req, res) => {
   console.log(req.body.item_id)
   console.log(values);
   db.notbook.upHighlight(values, (err, result) => {
+  });
+};
 
+let showHighlights = (req, res) => {
+  db.notbook.shHighlights((err, result) => {
+    res.render('highlights', { result })
   });
 };
 
@@ -168,5 +172,6 @@ let updateHighlights = (req, res) => {
     editItem,
     updateEditItem,
     updateHighlights,
+    showHighlights,
   };
 };

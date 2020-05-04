@@ -172,8 +172,23 @@ module.exports = (dbPoolInstance) => {
           call(null, null);
         };
       };
-    })
-  }
+    });
+  };
+
+  let shHighlights = (call) => {
+    let shHighlightsQ = 'SELECT * FROM items WHERE highlight = true';
+    dbPoolInstance.query(shHighlightsQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
 
     return {
       allCats,
@@ -187,5 +202,6 @@ module.exports = (dbPoolInstance) => {
       getItem,
       upEditItem,
       upHighlight,
+      shHighlights,
     };
 };
