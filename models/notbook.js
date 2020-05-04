@@ -10,18 +10,12 @@ module.exports = (dbPoolInstance) => {
     let allCatsQ = "SELECT * FROM categories ORDER BY category ASC";
     dbPoolInstance.query(allCatsQ, (err, queryRes) => {
       if (err) {
-        console.log(err);
-        console.log(err.message);
-        console.log("error block 11111")
         call(err, null);
       } else {
         if ( queryRes.rows.length > 0 ) {
-          console.log("NO error block found results 11111")
           call(null, queryRes.rows);
-          console.log(queryRes.rows);
         } else {
           call(null, null);
-          console.log("no error, no result 3333333")
         };
       };
     });
@@ -154,15 +148,11 @@ module.exports = (dbPoolInstance) => {
   let upEditItem = (iparams, values, call) => {
     let upEditItemQ = 'UPDATE items SET note=$1 where id ='+iparams+'returning *';
     dbPoolInstance.query(upEditItemQ, values, (err, queryRes) => {
-      console.log("AAAAAAAAAA")
       if (err) {
-        console.log(err);
         call(err, null);
       } else {
         if ( queryRes.rows.length > 0 ) {
           call(null, queryRes.rows);
-          console.log("BBBBBBBBBBBBB");
-          console.log(queryRes.rows);
         } else {
           call(null, null);
         };
@@ -174,12 +164,10 @@ module.exports = (dbPoolInstance) => {
     let upHighlightQ = 'UPDATE items SET highlight=$2 where id=$1 RETURNING *';
     dbPoolInstance.query(upHighlightQ, values, (err, queryRes) => {
       if (err) {
-        console.log(err);
         call(err, null);
       } else {
         if ( queryRes.rows.length > 0 ) {
           call(null, queryRes.rows);
-          console.log(queryRes.rows);
         } else {
           call(null, null);
         };
