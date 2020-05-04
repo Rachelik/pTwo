@@ -10,6 +10,8 @@ module.exports = (dbPoolInstance) => {
     let allCatsQ = "SELECT * FROM categories ORDER BY category ASC";
     dbPoolInstance.query(allCatsQ, (err, queryRes) => {
       if (err) {
+        console.log(err);
+        console.log(err.message);
         console.log("error block 11111")
         call(err, null);
       } else {
