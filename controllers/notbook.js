@@ -104,6 +104,36 @@ let updateItem = (req, res) => {
   });
 };
 
+// '/category/:id/title/:tid/item/:iid'
+let editItem = (req, res) => {
+  let params = req.params.id;
+  let tparams = req.params.tid;
+  let iparams = req.params.iid;
+  db.notbook.getCatTitle(params, (err, catRes) => {
+    //catRes will get me category_id and category
+    db.notbook.getTitle(tparams, (err, titleRes) => {
+      //result will get me all titles under category
+      db.notbook.getTitleItem(tparams, (err, itemRes) =>{
+        //result with all items under a title
+        db.notbook.getItem(iparams, (err, itemR) => {
+          res.render('edit-item', { catRes, titleRes, itemRes, itemR });
+        });
+      });
+    });
+  });
+};
+
+// '/category/:id/title/:tid/item/:iid'
+let updateEditItem = (req, res) => {
+  let params = req.params.id;
+  let tparams = req.params.tid;
+  let iparams = req.params.iid;
+  let values = [req.body.note]
+  db.notbook.upEditItem(iparams, values, (err, itemR) => {
+    res.redirect('/category/'+params+'/title/'+tparams);
+  });
+};
+
 /**
 * =========================================
 * Export controller functions as a module
@@ -122,5 +152,7 @@ let updateItem = (req, res) => {
     showTitle,
     newItem,
     updateItem,
+    editItem,
+    updateEditItem,
   };
 };

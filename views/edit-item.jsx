@@ -1,22 +1,19 @@
 var React = require("react");
 
-class Titles extends React.Component {
+class Newitem extends React.Component {
   render() {
-    let pages = this.props.result;
+    //Title
+    let pages = this.props.titleRes[0];
+    let title = pages.title;
+    let titleId = pages.id;
+
+    //Category
     let categories = this.props.catRes[0];
     let category = categories.category;
-    let newTitleLink = "/category/"+categories.id+"/title/new";
+    let item = this.props.itemR[0];
 
-    let titleList;
-    if (pages === null) {
-      titleList = "No titles added yet. Please add a category using the '+ New Category' button";
-    } else {
-      titleList = pages.map((page) => {
-      return (
-        <li key={page.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+page.category_id+"/title/"+page.id} className="list-group-item list-group-item-action all-page-list">{page.title}</a></li>
-        );
-      });
-    };
+    //link to save new item
+    let itemPutLink = "/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=put"
 
     return (
       <html>
@@ -31,24 +28,27 @@ class Titles extends React.Component {
           <body>
             <div className="container">
 
-                <div className="page-header">
-                  <h3>NOTbook</h3>
-                </div>
+              <div className="page-header">
+                <h3>NOTbook</h3>
+              </div>
 
-                <ul className="nav nav-tabs">
-                  <li><a href="/main" className="nav-items nav-link">Main</a></li>
-                  <li><a href="/category" className="nav-items nav-link">Category</a></li>
-                </ul>
+              <h5>{category}</h5>
+              <h6>{title}</h6>
+              <br/>
 
-                <h5>{category}</h5>
+              <div className="item-form-section">
 
-                <a href={newTitleLink} className="btn btn-outline-info">+ New Title</a>
+                <form action={itemPutLink} method="POST">
+                  <div className="form-row">
+                    <div className="col col-sm-9 col-xs-6">
+                      <input name="note" className="form-control" defaultValue={item.note} required/>
+                    </div>
+                    <input type="submit" className="btn btn-outline-info" value="Edit Item" />
+                    <input name="title_id" className="form-control hidden" defaultValue={titleId} readOnly/>
+                  </div>
+                </form>
 
-                <div className="titles">
-                  <ul className="list-group">
-                    {titleList}
-                  </ul>
-                </div>
+              </div>
 
             </div>
             <div className="footer">
@@ -58,11 +58,10 @@ class Titles extends React.Component {
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossOrigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossOrigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossOrigin="anonymous"></script>
-
         </body>
       </html>
     );
   }
 }
 
-module.exports = Titles;
+module.exports = Newitem;

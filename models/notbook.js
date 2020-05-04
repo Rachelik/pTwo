@@ -128,7 +128,37 @@ module.exports = (dbPoolInstance) => {
         };
       };
     });
-  }
+  };
+
+  let getItem = (iparams, call) => {
+    let getItemQ = "SELECT * FROM items where id ="+iparams;
+    dbPoolInstance.query(getItemQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
+
+  let upEditItem = (iparams, values, call) => {
+    let upEditItemQ = 'UPDATE items SET note=$1 where id ='+iparams;
+    dbPoolInstance.query(upEditItemQ, values, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
 
 
     return {
@@ -140,5 +170,7 @@ module.exports = (dbPoolInstance) => {
       upTitle,
       getTitleItem,
       upItem,
+      getItem,
+      upEditItem,
     };
 };

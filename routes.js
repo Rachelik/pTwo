@@ -20,7 +20,8 @@ module.exports = (app, allModels) => {
   app.get('/category/:id/title/:tid/item/new', notbookCtrl.newItem);
   app.post('/category/:id/title/:tid/item', notbookCtrl.updateItem);
 
-  // app.get('/category/:id/title/:tid/items/new', notbookCtrl.newItem);
+  app.get('/category/:id/title/:tid/item/:iid', notbookCtrl.editItem);
+  app.put('/category/:id/title/:tid/item/:iid', notbookCtrl.updateEditItem);
 
   app.get('/main', notbookCtrl.main)
 

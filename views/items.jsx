@@ -12,6 +12,7 @@ class Items extends React.Component {
     // let newTitleLink = "/category/"+categories.id+"/title/new";
 
     let newItemLink = "/category/"+categories.id+"/title/"+pages.id+"/item/new"
+
     let items = this.props.itemRes;
     let itemList;
     if (items === null) {
@@ -19,7 +20,7 @@ class Items extends React.Component {
     } else {
       itemList = items.map((item) => {
       return (
-        <li key={item.id} className="d-flex justify-content-between align-items-center list-group-item list-group-item-action all-item-list">{item.note}</li>
+        <li key={item.id} className="d-flex justify-content-between align-items-center"><a href={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id} className="list-group-item list-group-item-action">{item.note}</a></li>
         );
       });
 
@@ -50,9 +51,8 @@ class Items extends React.Component {
                 <h6>{title}</h6>
                 <br/>
 
+
                 <a href={newItemLink} className="btn btn-outline-info">+ New Item</a>
-                <br/>
-                <br/>
 
                 <div className="items">
                   <ul className="all-items-list list-group">
