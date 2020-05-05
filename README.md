@@ -87,12 +87,14 @@ Feature lacking
   - console.log to see if everything is working before writing more code.
   - picturing what I wanted.
   - search for solution.
+  - notes taking and revising.
 
   2. What habits did I have during this unit that I can improve on?
   - Understanding each materials in depth.
   - ask when I am stuck.
   - time management.
   - Don't search too far. Might get distracted. Search enough to get things done.
+  - notes taking to recall what I have learnt and do more research.
 
   3. How is the overall level of the course during this unit? (instruction, course materials, etc.)
   - So far I am still following but I think I need time to revise back what each code truly means.
