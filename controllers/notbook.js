@@ -45,6 +45,27 @@ module.exports = (db) => {
     });
   };
 
+  // '/category/:id'
+  let updateEditCategory = (req, res) => {
+    let params = req.params.id;
+    let tparams = req.params.tid;
+    let values = [req.body.category]
+    db.notbook.upEditCategory(params, values, (err, itemR) => {
+      res.redirect('/category/'+params);
+    });
+  };
+
+  let deleteCategory = (req, res) => {
+    let params = req.params.id;
+    db.notbook.deleteCategoryTitlesItems(params, (err, itemR) => {
+      db.notbook.deleteCategoryTitles(params, (err, titleR) => {
+        db.notbook.deleteCategory(params, (err, catR) => {
+          res.redirect('/category/');
+        });
+      });
+    });
+  };
+
   let newTitle = (req, res) => {
     let params = req.params.id;
     db.notbook.getCatTitle(params, (err, catRes) => {
@@ -72,6 +93,27 @@ module.exports = (db) => {
         db.notbook.getTitleItem(tparams, (err, itemRes) =>{
           res.render('items', { catRes, titleRes, itemRes });
         });
+      });
+    });
+  };
+
+  // '/category/:id/title/:tid'
+  let updateEditTitle = (req, res) => {
+    let params = req.params.id;
+    let tparams = req.params.tid;
+    let values = [req.body.title]
+    db.notbook.upEditTitle(tparams, values, (err, itemR) => {
+      res.redirect('/category/'+params+'/title/'+tparams);
+    });
+  };
+
+  let deleteTitle = (req, res) => {
+    let params = req.params.id;
+    let tparams = req.params.tid;
+    let iparams = req.params.iid;
+    db.notbook.deleteTitle(tparams, (err, titleR) => {
+      db.notbook.deleteTitleItems(tparams, (Err, itemR) => {
+        res.redirect('/category/'+params);
       });
     });
   };
@@ -133,14 +175,20 @@ let updateEditItem = (req, res) => {
   });
 };
 
+let deleteItem = (req, res) => {
+  let params = req.params.id;
+  let tparams = req.params.tid;
+  let iparams = req.params.iid;
+  db.notbook.deleteItem(iparams, (err, itemR) => {
+    res.redirect('/category/'+params+'/title/'+tparams);
+  });
+};
+
 let updateHighlights = (req, res) => {
   let params = req.params.id;
   let tparams = req.params.tid;
   let iparams = req.params.iid;
   let values = [req.body.item_id, req.body.highlight]
-  console.log("req.body.item_id")
-  console.log(req.body.item_id)
-  console.log(values);
   db.notbook.upHighlight(values, (err, result) => {
   });
 };
@@ -164,13 +212,18 @@ let showHighlights = (req, res) => {
     newCategory,
     updateCategory,
     showCategory,
+    updateEditCategory,
+    deleteCategory,
     newTitle,
     updateTitle,
     showTitle,
+    updateEditTitle,
+    deleteTitle,
     newItem,
     updateItem,
     editItem,
     updateEditItem,
+    deleteItem,
     updateHighlights,
     showHighlights,
   };

@@ -40,7 +40,7 @@ class Newitem extends React.Component {
                 <form action={itemPostLink} method="POST">
                   <div className="form-row">
                     <div className="col col-sm-9 col-xs-6">
-                      <input name="note" className="form-control" required/>
+                      <input name="note" className="form-control" placeholder="Enter new note here" required/>
                     </div>
                     <input type="submit" className="btn btn-outline-info" value="Add Item" />
                     <input name="title_id" className="form-control hidden" defaultValue={titleId} readOnly/>

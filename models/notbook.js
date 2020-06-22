@@ -68,6 +68,66 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  let upEditCategory = (params, values, call) => {
+    let upEditCategoryQ = 'UPDATE categories SET category=$1 where id ='+params+'returning *';
+    dbPoolInstance.query(upEditCategoryQ, values, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
+/////
+  let deleteCategory = (params, call) => {
+    let deleteCategoryQ = 'DELETE FROM categories WHERE id='+params+'returning *';
+    dbPoolInstance.query(deleteCategoryQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
+
+  let deleteCategoryTitles = (params, call) => {
+    let deleteCategoryTitlesQ = 'DELETE FROM pages WHERE category_id='+params+'returning *';
+    dbPoolInstance.query(deleteCategoryTitlesQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  }
+
+  let deleteCategoryTitlesItems = (params, call) => {
+    let deleteCategoryTitlesItemsQ = 'DELETE FROM items WHERE title_id IN (SELECT pages.id FROM pages WHERE category_id ='+params+') returning *;';
+    dbPoolInstance.query(deleteCategoryTitlesItemsQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  }
+
   // to get title from pages table when click
    let getTitle = (tparams, call) => {
      let getTitleQ = 'SELECT * FROM pages WHERE id='+tparams;
@@ -97,6 +157,52 @@ module.exports = (dbPoolInstance) => {
         };
       };
     })
+  }
+
+
+  let upEditTitle = (tparams, values, call) => {
+    let upEditTitleQ = 'UPDATE pages SET title=$1 where id ='+tparams+'returning *';
+    dbPoolInstance.query(upEditTitleQ, values, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
+
+  let deleteTitle = (tparams, call) => {
+    let deleteTitleQ = 'DELETE FROM pages WHERE id='+tparams+'returning *';
+    dbPoolInstance.query(deleteTitleQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
+//when delete title, items under the current title will also be deleted.
+  let deleteTitleItems = (tparams, call) => {
+    let deleteTitleItemsQ = 'DELETE FROM items WHERE title_id='+tparams+'returning *';
+    dbPoolInstance.query(deleteTitleItemsQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
   }
 
 //get item using title
@@ -160,6 +266,21 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  let deleteItem = (iparams, call) => {
+    let deleteItemQ = 'DELETE FROM items WHERE id='+iparams+'returning *';
+    dbPoolInstance.query(deleteItemQ, (err, queryRes) => {
+      if (err) {
+        call(err, null);
+      } else {
+        if ( queryRes.rows.length > 0 ) {
+          call(null, queryRes.rows);
+        } else {
+          call(null, null);
+        };
+      };
+    });
+  };
+
   let upHighlight = (values, call) => {
     let upHighlightQ = 'UPDATE items SET highlight=$2 where id=$1 RETURNING *';
     dbPoolInstance.query(upHighlightQ, values, (err, queryRes) => {
@@ -195,12 +316,20 @@ module.exports = (dbPoolInstance) => {
       upCat,
       getCatTitle,
       showCat,
+      upEditCategory,
+      deleteCategory,
+      deleteCategoryTitles,
+      deleteCategoryTitlesItems,
       getTitle,
       upTitle,
+      upEditTitle,
+      deleteTitle,
+      deleteTitleItems,
       getTitleItem,
       upItem,
       getItem,
       upEditItem,
+      deleteItem,
       upHighlight,
       shHighlights,
     };

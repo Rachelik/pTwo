@@ -26,7 +26,7 @@ class Newcategory extends React.Component {
                 <form action="/category" method="POST">
                   <div className="form-row">
                     <div className="col col-sm-9 col-xs-6">
-                      <input name="category" className="form-control" required/>
+                      <input name="category" className="form-control" placeholder="Enter new Category here" required/>
                     </div>
                     <input type="submit" className="btn btn-outline-info up-cat-btn" value="Add Category" />
                   </div>

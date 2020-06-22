@@ -7,6 +7,10 @@ class Titles extends React.Component {
     let category = categories.category;
     let newTitleLink = "/category/"+categories.id+"/title/new";
 
+    let categoryPutLink = "/category/"+categories.id+"?_method=put"
+
+    let categoryDeleteLink = "/category/"+categories.id+"?_method=delete"
+
     let titleList;
     if (pages === null) {
       titleList = "No titles added yet. Please add a category using the '+ New Title' button";
@@ -41,16 +45,32 @@ class Titles extends React.Component {
                   <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
                 </ul>
 
-                <h5>{category}</h5>
+                <div className="category-content">
+                  <div className = "delete-this">
+                    <form action={categoryDeleteLink} method="POST">
+                      <input type="submit" className="btn btn-outline-danger" value="Delete Category" />
+                    </form>
+                  </div>
+                  <br/>
+                  <div>
+                    <form action={categoryPutLink} method="POST">
+                      <div className="category-edit">
+                        <input name="category" className="form-control" defaultValue={category} required/>
+                      </div>
+                        <input type="submit" className="btn btn-outline-info" value="Edit Category" hidden/>
+                    </form>
+                  </div>
+                  <br/>
 
-                <a href={newTitleLink} className="btn btn-outline-info">+ New Title</a>
 
-                <div className="titles">
-                  <ul className="list-group">
-                    {titleList}
-                  </ul>
+                  <h6>All Titles</h6>
+                  <a href={newTitleLink} className="btn btn-outline-info">+ New Title</a>
+                  <div className="titles">
+                    <ul className="list-group">
+                      {titleList}
+                    </ul>
+                  </div>
                 </div>
-
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>

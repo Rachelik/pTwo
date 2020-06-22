@@ -26,6 +26,12 @@ body {
   border-bottom: 5px solid black;
 }
 
+.main-contents {
+  background-color: white;
+  padding: 20px;
+  margin: 10px 0;
+}
+
 .btn {
   background-color: white;
 }
@@ -81,7 +87,7 @@ h5, h6 {
 
 h5 {
   border: 1px solid #b1f2ff;
-  border-radius: 10px 10px;
+  border-radius: 5px;
   background-color: white;
   color: darkblue;
   padding: 5px 0;
@@ -103,4 +109,42 @@ h5 {
 
 .highlight-btn {
   font-size: 24px;
+}
+
+.title-edit input {
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  color: grey;
+}
+
+h5, .category-edit input {
+  text-align: center;
+  border: 1px solid #b1f2ff;
+  background-color: white;
+  color: darkblue;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px 0;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.delete-this {
+  text-align: right;
+}
+
+.back-link {
+  margin-bottom: 10px;
+}
+
+.content {
+  background-color: #ccf8fe;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.category-content {
+  background-color: #F2F3F4;
+  padding: 10px;
+  margin: 10px 0;
 }

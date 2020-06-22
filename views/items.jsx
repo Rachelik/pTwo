@@ -5,6 +5,7 @@ class Items extends React.Component {
     //Title
     let pages = this.props.titleRes[0];
     let title = pages.title;
+    let titleId = pages.id;
 
     //Category
     let categories = this.props.catRes[0];
@@ -13,6 +14,12 @@ class Items extends React.Component {
     let items = this.props.itemRes;
 
     let newItemLink = "/category/"+categories.id+"/title/"+pages.id+"/item/new"
+
+    let titlePutLink = "/category/"+categories.id+"/title/"+pages.id+"?_method=put"
+
+    let titleDeleteLink = "/category/"+categories.id+"/title/"+pages.id+"?_method=delete"
+
+    // let itemPutLink = "/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=put"
 
     let itemList;
     if (items === null) {
@@ -27,17 +34,19 @@ class Items extends React.Component {
         } else if (item.highlight === false || item.highlight === "null") {
           buttonIcon = "📌";
         }
-
+        // <a href={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id} className="list-group-item list-group-item-action">{item.note}</a>
+        // <input type="submit" className="btn btn-outline-info" value="Edit Item" />
       return (
         <li key={item.id} className="d-flex justify-content-between align-items-center">
-          <a href={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id} className="list-group-item list-group-item-action">{item.note}</a>
-
-            <input name="item_id" className="item_id" type="hidden" value={item.id} readOnly />
-            <input name="highlight" className="highlight-input" type="hidden" defaultValue={item.highlight} />
-
-
-          <button className="highlight-btn" value={item.id}>{buttonIcon}</button>
-
+              <form action={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=put"} method="POST" className="col col-md-11 col-sm-10 col-xs-6">
+                  <input name="note" className="form-control" defaultValue={item.note} required/>
+                  <input name="title_id" className="form-control hidden" type="hidden" defaultValue={titleId} readOnly/>
+              </form>
+              <div className="">
+                <input name="item_id" className="item_id" type="hidden" value={item.id} readOnly />
+                <input name="highlight" className="highlight-input" type="hidden" defaultValue={item.highlight} />
+                <button className="highlight-btn" value={item.id}>{buttonIcon}</button>
+              </div>
         </li>
         );
       });
@@ -67,18 +76,31 @@ class Items extends React.Component {
                 </ul>
 
                 <h5>{category}</h5>
-                <h6>{title}</h6>
-                <br/>
+                <div className="content">
+                  <div className="delete-this">
+                    <form action={titleDeleteLink} method="POST">
+                      <input type="submit" className="btn btn-outline-danger" value="Delete page" />
+                    </form>
+                  </div>
+                  <br/>
+                  <form action={titlePutLink} method="POST">
+                    <h6 className="title-edit">
+                      <input name="title" className="form-control" defaultValue={title} required/>
+                    </h6>
+                      <input type="submit" className="btn btn-outline-info" value="Edit Title" hidden/>
+                      <input name="category_id" className="form-control hidden" defaultValue={categories.id} readOnly/>
+                  </form>
+                  <br/>
 
 
-                <a href={newItemLink} className="btn btn-outline-info">+ New Item</a>
+                  <a href={newItemLink} className="btn btn-outline-info">+ New Item</a>
 
-                <div className="items">
-                  <ul className="all-items-list list-group">
-                    {itemList}
-                  </ul>
+                  <div className="items">
+                    <ul className="all-items-list list-group">
+                      {itemList}
+                    </ul>
+                  </div>
                 </div>
-
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>

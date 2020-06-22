@@ -39,7 +39,7 @@ class Categories extends React.Component {
                   <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
                 </ul>
 
-                <h5>Welcome</h5>
+                <h5>All Categories</h5>
 
                 <div className="contents">
                   <a href="/category/new" className="btn btn-outline-info">+ New Category</a>

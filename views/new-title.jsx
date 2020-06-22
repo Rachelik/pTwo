@@ -7,6 +7,7 @@ class Newtitle extends React.Component {
 
       //link to save new title
       let titlePostLink = "/category/"+category.id+"/title";
+      let categoryLink = "/category/"+category.id;
 
     return (
       <html>
@@ -27,13 +28,16 @@ class Newtitle extends React.Component {
 
               <h5>{category.category}</h5>
               <br/>
+              <div className="back-link">
+                <a href={categoryLink}>Back to Title page</a>
+              </div>
 
               <div className="title-form-section">
 
                 <form action={titlePostLink} method="POST">
                   <div className="form-row">
                     <div className="col col-sm-9 col-xs-6">
-                      <input name="title" className="form-control" required/>
+                      <input name="title" className="form-control" placeholder="Enter new Title here" required/>
                     </div>
                     <input type="submit" className="btn btn-outline-info" value="Add Title" />
                     <input name="category_id" className="form-control hidden" defaultValue={category.id}readOnly/>

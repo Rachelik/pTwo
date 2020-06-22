@@ -15,6 +15,8 @@ class Edititem extends React.Component {
     //link to save new item
     let itemPutLink = "/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=put"
 
+    let itemDeleteLink = "/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=delete"
+
     return (
       <html>
           <head>
@@ -35,9 +37,14 @@ class Edititem extends React.Component {
               <h5>{category}</h5>
               <h6>{title}</h6>
               <br/>
+              <div className="delete-this">
+                <form action={itemDeleteLink} method="POST">
+                  <input type="submit" className="btn btn-outline-danger" value="Delete this item" />
+                </form>
+              </div>
+              <br/>
 
               <div className="item-form-section">
-
                 <form action={itemPutLink} method="POST">
                   <div className="form-row">
                     <div className="col col-sm-9 col-xs-6">
@@ -47,7 +54,6 @@ class Edititem extends React.Component {
                     <input name="title_id" className="form-control hidden" defaultValue={titleId} readOnly/>
                   </div>
                 </form>
-
               </div>
 
             </div>

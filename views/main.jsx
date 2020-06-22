@@ -27,15 +27,13 @@ class Main extends React.Component {
                 </ul>
 
 
-                <h5>Manual</h5>
+                <h5>Welcome</h5>
 
-                <div className="contents">
-                <p>Click on existing Categories or create new Category using the "+ New Category" button</p>
-                <p>Under each Category, click on existing Title or create title using the "+ New Title" button. </p>
-                <p>Under each Title, create new item using the "+ New Item". Only note can be edited.</p>
-                <p>Category and Title cannot be edited.</p>
-
-
+                <div className="main-contents">
+                <p>Please feel free to make notes. Notes are taken with different categories and titles.</p>
+                <p>A category can have many titles and a title can have many notes. Each Category, Title and Notes can be added with the "+" prefix button on their respective page.</p>
+                <p>Please be aware of the delete button. Note that Delete Button for Category will delete all titles and notes along with it. Same to title, delete a title (page) will delete all the notes in it.</p>
+                <p>Edit can be done just by clicking the text itself.</p>
                 </div>
             </div>
             <div className="footer">
