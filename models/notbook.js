@@ -54,7 +54,7 @@ module.exports = (dbPoolInstance) => {
 
  //to get id and title from pages table
   let showCat = (params, call) => {
-    let showCatQ = 'SELECT * FROM pages WHERE category_id='+params;
+    let showCatQ = 'SELECT * FROM pages WHERE category_id='+params+"ORDER BY title ASC";
     dbPoolInstance.query(showCatQ, (err, queryRes) => {
       if (err) {
         call(err, null);
@@ -207,7 +207,7 @@ module.exports = (dbPoolInstance) => {
 
 //get item using title
   let getTitleItem = (tparams, call) => {
-    let getTitleItemQ = "SELECT * FROM items WHERE title_id ="+tparams;
+    let getTitleItemQ = "SELECT * FROM items WHERE title_id ="+tparams+"ORDER BY id ASC";
     dbPoolInstance.query(getTitleItemQ, (err, queryRes) => {
       if (err) {
         call(err, null);
