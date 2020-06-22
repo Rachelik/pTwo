@@ -1,8 +1,9 @@
 body {
-  background: url(/images/kaohsiung-dom-of-light.jpg);
-  background-repeat: no-repeat;
+  /*background: url(/images/kaohsiung-dom-of-light.jpg);*/
+/*  background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: cover;*/
+  background-color: purple;
 }
 
 .container {
