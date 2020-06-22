@@ -14,12 +14,13 @@ class Items extends React.Component {
     let items = this.props.itemRes;
 
     let newItemLink = "/category/"+categories.id+"/title/"+pages.id+"/item/new"
+    let titlesLink = "/category/"+categories.id
 
     let titlePutLink = "/category/"+categories.id+"/title/"+pages.id+"?_method=put"
 
     let titleDeleteLink = "/category/"+categories.id+"/title/"+pages.id+"?_method=delete"
 
-    // let itemPutLink = "/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=put"
+    // let itemDeleteLink = "/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=delete"
 
     let itemList;
     if (items === null) {
@@ -42,6 +43,12 @@ class Items extends React.Component {
                   <input name="note" className="form-control" defaultValue={item.note} required/>
                   <input name="title_id" className="form-control hidden" type="hidden" defaultValue={titleId} readOnly/>
               </form>
+
+              <div className="delete-note">
+                <form action={"/category/"+categories.id+"/title/"+pages.id+"/item/"+item.id+"?_method=delete"} method="POST">
+                  <input type="submit" className="btn btn-outline-danger" value="X" />
+                </form>
+              </div>
               <div className="">
                 <input name="item_id" className="item_id" type="hidden" value={item.id} readOnly />
                 <input name="highlight" className="highlight-input" type="hidden" defaultValue={item.highlight} />
@@ -74,8 +81,10 @@ class Items extends React.Component {
                   <li><a href="/category" className="nav-items nav-link">Category</a></li>
                   <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
                 </ul>
+                <br/>
 
                 <h5>{category}</h5>
+                <br/>
                 <div className="content">
                   <div className="delete-this">
                     <form action={titleDeleteLink} method="POST">
@@ -93,7 +102,12 @@ class Items extends React.Component {
                   <br/>
 
 
-                  <a href={newItemLink} className="btn btn-outline-info">+ New Item</a>
+                  <a href={newItemLink} className="btn btn-outline-info">+ Item</a>
+                  <br/>
+                  <br/>
+                  <div className="back-link">
+                    <a href={titlesLink}>Back to Titles page</a>
+                  </div>
 
                   <div className="items">
                     <ul className="all-items-list list-group">

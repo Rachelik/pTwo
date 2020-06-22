@@ -44,7 +44,7 @@ class Titles extends React.Component {
                   <li><a href="/category" className="nav-items nav-link">Category</a></li>
                   <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
                 </ul>
-
+                <br/>
                 <div className="category-content">
                   <div className = "delete-this">
                     <form action={categoryDeleteLink} method="POST">
@@ -64,7 +64,7 @@ class Titles extends React.Component {
 
 
                   <h6>All Titles</h6>
-                  <a href={newTitleLink} className="btn btn-outline-info">+ New Title</a>
+                  <a href={newTitleLink} className="btn btn-outline-info">+ Title</a>
                   <div className="titles">
                     <ul className="list-group">
                       {titleList}

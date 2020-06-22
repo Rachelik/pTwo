@@ -29,28 +29,29 @@ class Categories extends React.Component {
           <body>
             <div className="container">
 
-                <div className="page-header">
-                  <h3>NOTbook</h3>
+              <div className="page-header">
+                <h3>NOTbook</h3>
+              </div>
+
+              <ul className="nav nav-tabs">
+                <li><a href="/main" className="nav-items nav-link">Main</a></li>
+                <li><a href="/category" className="nav-items nav-link active">Category</a></li>
+                <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
+              </ul>
+              <br/>
+
+              <h5>All Categories</h5>
+              <br/>
+              <div className="contents">
+                <a href="/category/new" className="btn btn-outline-info">+ Category</a>
+
+                <div className="categories">
+                  <ul className="list-group">
+                    {list}
+                  </ul>
                 </div>
 
-                <ul className="nav nav-tabs">
-                  <li><a href="/main" className="nav-items nav-link">Main</a></li>
-                  <li><a href="/category" className="nav-items nav-link active">Category</a></li>
-                  <li><a href="/highlight" className="nav-items nav-link">Highlights</a></li>
-                </ul>
-
-                <h5>All Categories</h5>
-
-                <div className="contents">
-                  <a href="/category/new" className="btn btn-outline-info">+ New Category</a>
-
-                  <div className="categories">
-                    <ul className="list-group">
-                      {list}
-                    </ul>
-                  </div>
-
-            </div>
+              </div>
             </div>
             <div className="footer">
               <p>Created by: rachel-i 2020</p>

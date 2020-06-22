@@ -3,7 +3,7 @@ body {
 /*  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;*/
-  background-color: purple;
+  background-color: #663046;
 }
 
 .container {
@@ -28,7 +28,7 @@ body {
 }
 
 .main-contents {
-  background-color: white;
+  background-color: #dec2cb;
   padding: 20px;
   margin: 10px 0;
 }
@@ -85,7 +85,7 @@ h5, h6 {
 .none {
   display: none;
 }
-
+/*
 h5 {
   border: 1px solid #b1f2ff;
   border-radius: 5px;
@@ -93,7 +93,7 @@ h5 {
   color: darkblue;
   padding: 5px 0;
   font-family: "Trebuchet MS", sans-serif;
-}
+}*/
 
 .border-red {
   outline: 3px solid darkred;
@@ -116,13 +116,13 @@ h5 {
   text-align: center;
   font-weight: bold;
   border: none;
-  color: grey;
+  color: brown;
 }
 
 h5, .category-edit input {
   text-align: center;
-  border: 1px solid #b1f2ff;
-  background-color: white;
+  /*border: 1px solid #b1f2ff;*/
+  background-color: #abb1cf;
   color: darkblue;
   font-size: 22px;
   font-weight: bold;
@@ -136,16 +136,22 @@ h5, .category-edit input {
 
 .back-link {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .content {
-  background-color: #F2F3F4;
+  background-color: #dec2cb;
   padding: 20px;
   margin: 10px 0;
 }
 
 .category-content {
-  background-color: #F2F3F4;
+  background-color: #dec2cb;
   padding: 10px;
   margin: 10px 0;
+}
+
+.delete-note {
+  margin-left: 0;
+  font-weight: bold;
 }

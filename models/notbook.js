@@ -297,7 +297,7 @@ module.exports = (dbPoolInstance) => {
   };
 
   let shHighlights = (call) => {
-    let shHighlightsQ = 'SELECT * FROM items WHERE highlight = true';
+    let shHighlightsQ = 'SELECT DISTINCT ON (1) * FROM items, pages, categories WHERE items.highlight = true';
     dbPoolInstance.query(shHighlightsQ, (err, queryRes) => {
       if (err) {
         call(err, null);

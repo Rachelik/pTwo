@@ -13,7 +13,7 @@ class Highlights extends React.Component {
       itemList = items.map((item) => {
       return (
         <li key={item.id} className="d-flex justify-content-between align-items-center">
-          <a href="" className="list-group-item list-group-item-action">{item.note}</a>
+          <a href={"/category/"+item.category_id+"/title/"+item.title_id} className="list-group-item list-group-item-action">{item.note}</a>
         </li>
         );
       });

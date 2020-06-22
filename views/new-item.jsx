@@ -14,6 +14,8 @@ class Newitem extends React.Component {
     //link to save new item
     let itemPostLink = "/category/"+categories.id+"/title/"+pages.id+"/item"
 
+    let titleLink = "/category/"+categories.id+"/title/"+pages.id
+
     return (
       <html>
           <head>
@@ -34,6 +36,10 @@ class Newitem extends React.Component {
               <h5>{category}</h5>
               <h6>{title}</h6>
               <br/>
+              <br/>
+              <div className="back-link">
+                <a href={titleLink}>Back to Titles page</a>
+              </div>
 
               <div className="item-form-section">
 
