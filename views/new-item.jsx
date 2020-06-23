@@ -38,7 +38,7 @@ class Newitem extends React.Component {
               <br/>
               <br/>
               <div className="back-link">
-                <a href={titleLink}>Back to Titles page</a>
+                <a href={titleLink}>Exit</a>
               </div>
 
               <div className="item-form-section">
